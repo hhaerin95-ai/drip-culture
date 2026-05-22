@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $featured = Product::with(['category', 'variants', 'images'])
+        $featured = Product::with(['category'])
             ->where('status', 'Active')
             ->take(4)
             ->get();
