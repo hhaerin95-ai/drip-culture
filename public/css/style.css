@@ -3,6 +3,9 @@
    Main Stylesheet
    TSE3623 | Person A (Frontend)
    ============================================ */
+body{
+    background:red !important;
+}
 
 :root {
   --black: #0a0a0a;

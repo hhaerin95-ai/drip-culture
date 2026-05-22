@@ -8,6 +8,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}">
+
+    <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0a0a0a !important;
+    color:white !important;
+    font-family:Arial !important;
+}
+
+.navbar{
+    background:black !important;
+    padding:20px !important;
+}
+
+.product-card{
+    background:#1c1c1c !important;
+    border:1px solid #333 !important;
+    padding:20px !important;
+}
+</style>
 </head>
 <body>
 

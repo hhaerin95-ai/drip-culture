@@ -1,4 +1,7 @@
 <!-- FEATURED PRODUCTS -->
+ @extends('layouts.app')
+
+@section('content')
 <section class="section" id="featured">
     <div class="container">
         <p class="section-sub" style="color:var(--accent);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">
@@ -56,3 +59,4 @@
         </div>
     </div>
 </section>
+@endsection
