@@ -1,0 +1,9 @@
+[phases.setup]
+nixPkgs = ["php", "phpExtensions.pdo_mysql"]
+
+[phases.build]
+cmds = [
+  "composer install --no-dev --optimize-autoloader",
+  "php artisan config:clear",
+  "php artisan cache:clear"
+]
