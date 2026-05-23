@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Product::with(['category', 'variants', 'images'])
+        $query = Product::with('category')
             ->where('status', 'Active');
 
         if ($request->filled('cat')) {
@@ -25,7 +25,8 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        $product->load(['category', 'variants', 'images']);
+        $product->load('category');
+
         return view('products.show', compact('product'));
     }
 }
