@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category')
+        $products = Product::with(['category', 'variants'])
             ->where('status', 'Active')
             ->latest()
             ->paginate(12);
@@ -21,7 +21,7 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        $product->load('category');
+        $product->load(['category', 'variants']);
 
         return view('products.show', compact('product'));
     }
