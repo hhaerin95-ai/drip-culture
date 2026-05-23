@@ -14,11 +14,7 @@
             <span>/</span>
             <a href="{{ route('products.index') }}">Shop</a>
             <span>/</span>
-            <h1>
-    {{ $product->product_name }}
-</h1>
-
-<p>TESTTTTT</p>
+            {{ $product->product_name }}
         </div>
 
     </div>
