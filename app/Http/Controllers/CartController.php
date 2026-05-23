@@ -16,6 +16,11 @@ class CartController extends Controller
             ->get();
 
         $subtotal = $cartItems->sum(function ($item) {
+
+            if (!$item->variant) {
+                return 0;
+            }
+
             return $item->variant->price * $item->quantity;
         });
 
@@ -38,13 +43,14 @@ class CartController extends Controller
             'quantity' => 'required|integer|min:1',
         ]);
 
-        $existing = Cart::where('user_id', Auth::id())
+        $cart = Cart::where('user_id', Auth::id())
             ->where('variant_id', $request->variant_id)
             ->first();
 
-        if ($existing) {
+        if ($cart) {
 
-            $existing->increment('quantity', $request->quantity);
+            $cart->quantity += $request->quantity;
+            $cart->save();
 
         } else {
 
@@ -54,7 +60,6 @@ class CartController extends Controller
                 'quantity' => $request->quantity,
                 'added_at' => now(),
             ]);
-
         }
 
         return redirect()
@@ -66,7 +71,7 @@ class CartController extends Controller
     {
         $cart->delete();
 
-        return back()->with('success', 'Item removed.');
+        return back()->with('success', 'Removed.');
     }
 
     public function clear()

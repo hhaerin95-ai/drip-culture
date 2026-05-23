@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Variant extends Model
 {
+    protected $table = 'variants';
+
     protected $primaryKey = 'variant_id';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'product_id',
@@ -18,6 +22,10 @@ class Variant extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class, 'product_id', 'product_id');
+        return $this->belongsTo(
+            Product::class,
+            'product_id',
+            'product_id'
+        );
     }
 }

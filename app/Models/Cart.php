@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    protected $table = 'cart';
+    protected $table = 'carts';
 
     protected $primaryKey = 'cart_id';
 
@@ -21,6 +21,10 @@ class Cart extends Model
 
     public function variant()
     {
-        return $this->belongsTo(Variant::class, 'variant_id', 'variant_id');
+        return $this->belongsTo(
+            Variant::class,
+            'variant_id',
+            'variant_id'
+        );
     }
 }
