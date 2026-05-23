@@ -121,14 +121,14 @@
 
                     <div class="qty-wrap">
 
-                        <button class="qty-btn">-</button>
+                        <button class="qty-btn minus-btn">-</button>
 
-                        <input type="number"
-                               class="qty-input"
-                               value="1"
-                               min="1">
+<input type="number"
+       class="qty-input"
+       value="1"
+       min="1">
 
-                        <button class="qty-btn">+</button>
+<button class="qty-btn plus-btn">+</button>
 
                     </div>
 
@@ -167,3 +167,44 @@
 </section>
 
 @endsection
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // SIZE SELECT
+    const sizeButtons = document.querySelectorAll('.size-btn');
+
+    sizeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+
+            sizeButtons.forEach(b => b.classList.remove('active'));
+
+            btn.classList.add('active');
+
+        });
+    });
+
+    // QUANTITY
+    const minusBtn = document.querySelector('.minus-btn');
+const plusBtn = document.querySelector('.plus-btn');
+    const qtyInput = document.querySelector('.qty-input');
+
+    minusBtn.addEventListener('click', () => {
+
+        let qty = parseInt(qtyInput.value);
+
+        if(qty > 1){
+            qtyInput.value = qty - 1;
+        }
+
+    });
+
+    plusBtn.addEventListener('click', () => {
+
+        let qty = parseInt(qtyInput.value);
+
+        qtyInput.value = qty + 1;
+
+    });
+
+});
+</script>
