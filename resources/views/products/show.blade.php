@@ -8,6 +8,7 @@
 
 <div class="page-header">
     <div class="container">
+
         <div class="breadcrumb">
             <a href="{{ route('home') }}">Home</a>
             <span>/</span>
@@ -15,16 +16,19 @@
             <span>/</span>
             {{ $product->product_name }}
         </div>
+
     </div>
 </div>
 
 <section class="section">
+
     <div class="container">
 
         <div class="product-detail-grid">
 
             <!-- IMAGE -->
             <div>
+
                 <div style="
                     background:var(--darker);
                     border:1px solid var(--border);
@@ -37,13 +41,14 @@
                 ">
                     👕
                 </div>
+
             </div>
 
             <!-- INFO -->
             <div>
 
                 <div style="
-                    font-size:0.75rem;
+                    font-size:.75rem;
                     letter-spacing:2px;
                     text-transform:uppercase;
                     color:var(--accent);
@@ -54,40 +59,103 @@
                 </div>
 
                 <h1 style="
-                    font-size:2.5rem;
+                    font-size:4rem;
                     text-transform:uppercase;
-                    margin-bottom:12px;
+                    line-height:1;
+                    margin-bottom:16px;
                     color:var(--white);
                 ">
                     {{ $product->product_name }}
                 </h1>
 
-                <div style="
-                    font-size:2rem;
-                    font-weight:700;
-                    color:var(--accent);
-                    margin-bottom:24px;
-                ">
+                <div class="detail-price">
                     RM {{ number_format($product->base_price, 2) }}
                 </div>
 
                 <p style="
                     color:var(--grey);
                     line-height:1.8;
-                    margin-bottom:32px;
+                    margin-bottom:28px;
+                    max-width:500px;
                 ">
                     {{ $product->description }}
                 </p>
 
-                <div class="detail-stock">
-                    ✅ Available
+                <div class="stock-badge">
+                    ✅ In Stock
                 </div>
 
-                <div style="margin-top:32px;">
+                <!-- SIZE -->
+                <div style="margin-top:36px;">
+
+                    <div class="detail-label">
+                        Select Size
+                    </div>
+
+                    <div class="size-grid">
+
+                        @forelse($product->variants as $variant)
+
+                            <button class="size-btn">
+                                {{ $variant->size }}
+                            </button>
+
+                        @empty
+
+                            <div style="color:var(--grey)">
+                                No sizes available
+                            </div>
+
+                        @endforelse
+
+                    </div>
+
+                </div>
+
+                <!-- QUANTITY -->
+                <div>
+
+                    <div class="detail-label">
+                        Quantity
+                    </div>
+
+                    <div class="qty-wrap">
+
+                        <button class="qty-btn">-</button>
+
+                        <input type="number"
+                               class="qty-input"
+                               value="1"
+                               min="1">
+
+                        <button class="qty-btn">+</button>
+
+                    </div>
+
+                </div>
+
+                <!-- ACTIONS -->
+                <div class="detail-actions">
+
+                    <button class="btn btn-primary">
+                        Add To Cart
+                    </button>
+
+                    <button class="btn btn-dark">
+                        Buy Now
+                    </button>
+
+                </div>
+
+                <div style="margin-top:24px;">
+
                     <a href="{{ route('products.index') }}"
-                       class="btn btn-primary">
+                       class="btn btn-dark">
+
                         ← Back To Shop
+
                     </a>
+
                 </div>
 
             </div>
@@ -95,6 +163,7 @@
         </div>
 
     </div>
+
 </section>
 
 @endsection
