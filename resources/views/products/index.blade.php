@@ -49,13 +49,6 @@
                             <div class="product-img">
     👕
 </div>
-                            @if($img)
-                                <img src="{{ asset('storage/' . $img->image_url) }}"
-                                     alt="{{ $p->product_name }}"
-                                     style="width:100%;height:100%;object-fit:cover;">
-                            @else
-                                <div class="product-img-placeholder">👕</div>
-                            @endif
                             @if ($p->isLowStock() && $totalStock > 0)
                                 <span class="product-badge" style="background:var(--accent-2);top:auto;bottom:12px;">Low Stock</span>
                             @endif
