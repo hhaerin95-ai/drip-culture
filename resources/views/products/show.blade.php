@@ -137,15 +137,23 @@
                 <!-- ACTIONS -->
                 <div class="detail-actions">
 
-                    <button class="btn btn-primary">
-                        Add To Cart
-                    </button>
+    <a href="{{ route('register') }}"
+       class="btn btn-primary"
+       style="display:inline-flex;align-items:center;justify-content:center;">
 
-                    <button class="btn btn-dark">
-                        Buy Now
-                    </button>
+        Add To Cart
 
-                </div>
+    </a>
+
+    <a href="{{ route('register') }}"
+       class="btn btn-dark"
+       style="display:inline-flex;align-items:center;justify-content:center;">
+
+        Buy Now
+
+    </a>
+
+</div>
 
                 <div style="margin-top:24px;">
 

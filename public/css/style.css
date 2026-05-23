@@ -146,6 +146,7 @@ p { color: var(--grey); }
   text-transform: uppercase;
   border-radius: var(--radius);
   cursor: pointer;
+  text-decoration:none;
   transition: all var(--transition);
   border: 2px solid transparent;
 }
