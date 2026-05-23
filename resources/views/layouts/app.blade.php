@@ -51,7 +51,9 @@ body{
         <div class="navbar-actions">
             @auth
                 <a href="{{ route('cart.index') }}" class="cart-btn">
-                    🛒 <span class="cart-count">0</span>
+                    🛒 <span class="cart-count">
+    {{ auth()->check() ? \App\Models\Cart::where('user_id', auth()->id())->sum('quantity') : 0 }}
+</span>
                 </a>
                 <div class="nav-dropdown" style="position:relative;">
                     <span class="navbar-logo" style="font-size:1rem;cursor:pointer;">

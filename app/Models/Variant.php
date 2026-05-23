@@ -8,15 +8,12 @@ class Variant extends Model
 {
     protected $primaryKey = 'variant_id';
 
-    public $timestamps = false;
-
     protected $fillable = [
         'product_id',
         'size',
         'colour',
-        'sku_code',
         'stock_qty',
-        'additional_price'
+        'price'
     ];
 
     public function product()
