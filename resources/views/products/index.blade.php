@@ -46,7 +46,9 @@
                     @php $totalStock = $p->variants->sum('stock_qty'); @endphp
                     <div class="product-card">
                         <div class="product-img">
-                            @php $img = $p->images->first(); @endphp
+                            <div class="product-img">
+    👕
+</div>
                             @if($img)
                                 <img src="{{ asset('storage/' . $img->image_url) }}"
                                      alt="{{ $p->product_name }}"
