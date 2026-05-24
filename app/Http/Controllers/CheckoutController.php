@@ -21,7 +21,7 @@ class CheckoutController extends Controller
 
     public function index()
     {
-        $cartItems = Cart::with(['variant.product.images'])
+        $cartItems = Cart::with(['variant.product'])
             ->where('user_id', Auth::id())
             ->get();
 
