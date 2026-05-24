@@ -64,12 +64,7 @@
             @foreach ($order->items as $item)
                 <div style="display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);">
                     <div style="width:56px;height:56px;background:var(--dark);border-radius:4px;overflow:hidden;flex-shrink:0;">
-                        @php $img = $item->variant->product->images->first(); @endphp
-                        @if($img)
-                            <img src="{{ asset('storage/' . $img->image_url) }}" alt="" style="width:100%;height:100%;object-fit:cover;">
-                        @else
-                            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">👕</div>
-                        @endif
+                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">👕</div>
                     </div>
                     <div style="flex:1;">
                         <div style="color:var(--white);font-weight:700;font-size:0.9rem;">{{ $item->variant->product->product_name }}</div>
