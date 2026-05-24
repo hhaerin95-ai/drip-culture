@@ -137,13 +137,12 @@
                 <!-- ACTIONS -->
                 <div class="detail-actions">
 
-    <a href="{{ route('register') }}"
-       class="btn btn-primary"
-       style="display:inline-flex;align-items:center;justify-content:center;">
-
-        Add To Cart
-
-    </a>
+    <form method="POST" action="{{ route('cart.add') }}">
+        @csrf
+        <input type="hidden" name="variant_id" id="selected_variant_id" value="">
+        <input type="hidden" name="quantity" id="selected_quantity" value="1">
+        <button type="submit" class="btn btn-primary">Add To Cart</button>
+    </form>
 
     <a href="{{ route('register') }}"
        class="btn btn-dark"
