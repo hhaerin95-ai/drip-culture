@@ -96,7 +96,7 @@
 
                         @forelse($product->variants as $variant)
 
-                            <button class="size-btn">
+                            <button class="size-btn" type="button" data-variant-id="{{ $variant->variant_id }}" onclick="selectSize(this)">
                                 {{ $variant->size }}
                             </button>
 
@@ -121,14 +121,11 @@
 
                     <div class="qty-wrap">
 
-                        <button class="qty-btn minus-btn">-</button>
+                        <button class="qty-btn minus-btn" type="button">-</button>
 
-<input type="number"
-       class="qty-input"
-       value="1"
-       min="1">
+                        <input type="number" class="qty-input" value="1" min="1">
 
-<button class="qty-btn plus-btn">+</button>
+                        <button class="qty-btn plus-btn" type="button">+</button>
 
                     </div>
 
@@ -137,30 +134,25 @@
                 <!-- ACTIONS -->
                 <div class="detail-actions">
 
-    <form method="POST" action="{{ route('cart.add') }}">
-        @csrf
-        <input type="hidden" name="variant_id" id="selected_variant_id" value="">
-        <input type="hidden" name="quantity" id="selected_quantity" value="1">
-        <button type="submit" class="btn btn-primary">Add To Cart</button>
-    </form>
+                    <form method="POST" action="{{ route('cart.add') }}">
+                        @csrf
+                        <input type="hidden" name="variant_id" id="selected_variant_id" value="">
+                        <input type="hidden" name="quantity" id="selected_quantity" value="1">
+                        <button type="submit" class="btn btn-primary">Add To Cart</button>
+                    </form>
 
-    <a href="{{ route('register') }}"
-       class="btn btn-dark"
-       style="display:inline-flex;align-items:center;justify-content:center;">
+                    <a href="{{ route('register') }}"
+                       class="btn btn-dark"
+                       style="display:inline-flex;align-items:center;justify-content:center;">
+                        Buy Now
+                    </a>
 
-        Buy Now
-
-    </a>
-
-</div>
+                </div>
 
                 <div style="margin-top:24px;">
 
-                    <a href="{{ route('products.index') }}"
-                       class="btn btn-dark">
-
+                    <a href="{{ route('products.index') }}" class="btn btn-dark">
                         ← Back To Shop
-
                     </a>
 
                 </div>
@@ -173,45 +165,42 @@
 
 </section>
 
-@endsection
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
     // SIZE SELECT
-    const sizeButtons = document.querySelectorAll('.size-btn');
-
-    sizeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-
-            sizeButtons.forEach(b => b.classList.remove('active'));
-
-            btn.classList.add('active');
-
-        });
-    });
+    function selectSize(btn) {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('selected_variant_id').value = btn.dataset.variantId;
+    }
+    window.selectSize = selectSize;
 
     // QUANTITY
     const minusBtn = document.querySelector('.minus-btn');
-const plusBtn = document.querySelector('.plus-btn');
+    const plusBtn = document.querySelector('.plus-btn');
     const qtyInput = document.querySelector('.qty-input');
+    const selectedQty = document.getElementById('selected_quantity');
 
     minusBtn.addEventListener('click', () => {
-
         let qty = parseInt(qtyInput.value);
-
-        if(qty > 1){
+        if (qty > 1) {
             qtyInput.value = qty - 1;
+            selectedQty.value = qty - 1;
         }
-
     });
 
     plusBtn.addEventListener('click', () => {
-
         let qty = parseInt(qtyInput.value);
-
         qtyInput.value = qty + 1;
+        selectedQty.value = qty + 1;
+    });
 
+    qtyInput.addEventListener('change', () => {
+        selectedQty.value = qtyInput.value;
     });
 
 });
 </script>
+
+@endsection
