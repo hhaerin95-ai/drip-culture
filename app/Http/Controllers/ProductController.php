@@ -17,9 +17,9 @@ class ProductController extends Controller
         $query->where('category_id', $request->cat);
     }
 
-    if ($request->filled('search')) {
-        $query->where('product_name', 'like', '%' . $request->search . '%');
-    }
+    if ($request->filled('q')) {
+    $query->where('product_name', 'like', '%' . $request->q . '%');
+}
 
     if ($request->filled('sort')) {
         if ($request->sort === 'price_asc') {
