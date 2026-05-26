@@ -62,6 +62,7 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 Route::get('/setup-admin', function () {
     \App\Models\User::create([
         'role_id'      => 1,
+        'name'         => 'Admin',
         'full_name'    => 'Admin',
         'email'        => 'admin@dripculture.my',
         'password'     => bcrypt('Admin@1234'),
