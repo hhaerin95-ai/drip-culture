@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\OrderItem;
 
 class Variant extends Model
 {
@@ -28,4 +29,8 @@ class Variant extends Model
             'product_id'
         );
     }
+    public function orderItems()
+{
+    return $this->hasMany(OrderItem::class, 'variant_id', 'variant_id');
+}
 }
