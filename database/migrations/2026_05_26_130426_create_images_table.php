@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
 {
+    Schema::dropIfExists('images');
+    
     Schema::create('images', function (Blueprint $table) {
         $table->id();
         $table->unsignedBigInteger('product_id');
         $table->string('image_path');
         $table->boolean('is_primary')->default(false);
         $table->timestamps();
-
-        $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
     });
 }
 };
