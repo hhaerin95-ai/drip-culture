@@ -58,3 +58,15 @@ Route::middleware('auth')->group(function () {
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+Route::get('/setup-admin', function () {
+    \App\Models\User::create([
+        'role_id'      => 1,
+        'full_name'    => 'Admin',
+        'email'        => 'admin@dripculture.my',
+        'password'     => bcrypt('Admin@1234'),
+        'phone_number' => '0123456789',
+        'status'       => 'Active',
+    ]);
+    return 'Admin created!';
+});
